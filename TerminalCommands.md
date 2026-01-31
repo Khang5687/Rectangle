@@ -97,6 +97,13 @@ To set it to a proportion of your screen's width, set it to a value between 0 an
 defaults write com.knollsoft.Rectangle stageSize -float <VALUE_BETWEEN_0_AND_1>
 ```
 
+To override the Stage Manager size for specific actions:
+
+```bash
+defaults write com.knollsoft.Rectangle stageSizeMaximize -float <VALUE>
+defaults write com.knollsoft.Rectangle stageSizeAlmostMaximize -float <VALUE>
+```
+
 ## Enable Todo Mode
 
 See the [wiki](https://github.com/rxhanson/Rectangle/wiki/Todo-Mode) for more info.

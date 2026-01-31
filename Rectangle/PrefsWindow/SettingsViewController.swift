@@ -33,8 +33,12 @@ class SettingsViewController: NSViewController {
     @IBOutlet weak var toggleTodoShortcutView: MASShortcutView!
     @IBOutlet weak var reflowTodoShortcutView: MASShortcutView!
     @IBOutlet weak var stageView: NSStackView!
+    @IBOutlet weak var stageMaximizeTitleLabel: NSTextField!
     @IBOutlet weak var stageSlider: NSSlider!
     @IBOutlet weak var stageLabel: NSTextField!
+    @IBOutlet weak var stageAlmostMaximizeTitleLabel: NSTextField!
+    @IBOutlet weak var stageAlmostMaximizeSlider: NSSlider!
+    @IBOutlet weak var stageAlmostMaximizeLabel: NSTextField!
 
     @IBOutlet weak var cycleSizesView: NSStackView!
 
@@ -186,14 +190,26 @@ class SettingsViewController: NSViewController {
     }
     
     @IBAction func stageSliderChanged(_ sender: NSSlider) {
-        stageLabel.stringValue = "\(sender.intValue) px"
-        if let event = NSApp.currentEvent {
-            if event.type == .leftMouseUp || event.type == .keyDown {
-                let value: Float = sender.floatValue == 0 ? -1 : sender.floatValue
-                if value != Defaults.stageSize.value {
-                    Defaults.stageSize.value = value
-                }
+        if sender == stageSlider {
+            stageLabel.stringValue = "\(sender.intValue) px"
+        } else if sender == stageAlmostMaximizeSlider {
+            stageAlmostMaximizeLabel.stringValue = "\(sender.intValue) px"
+        }
+
+        guard let event = NSApp.currentEvent, event.type == .leftMouseUp || event.type == .keyDown else {
+            return
+        }
+
+        let value: Float = sender.floatValue == 0 ? -1 : sender.floatValue
+        if sender == stageSlider {
+            if value != Defaults.stageSizeMaximize.value {
+                Defaults.stageSizeMaximize.value = value
             }
+            if value != Defaults.stageSize.value {
+                Defaults.stageSize.value = value
+            }
+        } else if sender == stageAlmostMaximizeSlider, value != Defaults.stageSizeAlmostMaximize.value {
+            Defaults.stageSizeAlmostMaximize.value = value
         }
     }
     
@@ -607,9 +623,16 @@ class SettingsViewController: NSViewController {
         doubleClickTitleBarCheckbox.state = WindowAction(rawValue: Defaults.doubleClickTitleBar.value - 1) != nil ? .on : .off
 
         if StageUtil.stageCapable {
-            stageSlider.intValue = Int32(Defaults.stageSize.value)
+            stageMaximizeTitleLabel.stringValue = WindowAction.maximize.displayName ?? "Maximize"
+            stageAlmostMaximizeTitleLabel.stringValue = WindowAction.almostMaximize.displayName ?? "Almost Maximize"
+
+            stageSlider.intValue = Int32(Defaults.stageSizeMaximize.value)
             stageSlider.isContinuous = true
             stageLabel.stringValue = "\(stageSlider.intValue) px"
+
+            stageAlmostMaximizeSlider.intValue = Int32(Defaults.stageSizeAlmostMaximize.value)
+            stageAlmostMaximizeSlider.isContinuous = true
+            stageAlmostMaximizeLabel.stringValue = "\(stageAlmostMaximizeSlider.intValue) px"
         } else {
             stageView.isHidden = true
         }

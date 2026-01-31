@@ -156,14 +156,16 @@ struct AdjacentScreens {
 
 extension NSScreen {
 
-    func adjustedVisibleFrame(_ ignoreTodo: Bool = false, _ ignoreStage: Bool = false) -> CGRect {
+    func adjustedVisibleFrame(_ ignoreTodo: Bool = false, _ ignoreStage: Bool = false, stageSizeOverride: CGFloat? = nil) -> CGRect {
         var newFrame = visibleFrame
-        
-        if !ignoreStage && Defaults.stageSize.value > 0 {
+
+        let stageSizeValue = stageSizeOverride ?? Defaults.stageSize.cgFloat
+
+        if !ignoreStage && stageSizeValue > 0 {
             if StageUtil.stageCapable && StageUtil.stageEnabled && StageUtil.stageStripShow && StageUtil.isStageStripVisible(self) {
-                let stageSize = Defaults.stageSize.value < 1
-                    ? newFrame.size.width * Defaults.stageSize.cgFloat
-                    : Defaults.stageSize.cgFloat
+                let stageSize = stageSizeValue < 1
+                    ? newFrame.size.width * stageSizeValue
+                    : stageSizeValue
                 
                 if StageUtil.stageStripPosition == .left {
                     newFrame.origin.x += stageSize
@@ -201,4 +203,3 @@ extension NSScreen {
         NSScreen.screens.contains(where: {!$0.frame.isLandscape})
     }
 }
-

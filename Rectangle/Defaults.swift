@@ -77,6 +77,8 @@ class Defaults {
     static let cascadeAllDeltaSize = FloatDefault(key: "cascadeAllDeltaSize", defaultValue: 30)
     static let sixthsSnapArea = OptionalBoolDefault(key: "sixthsSnapArea")
     static let stageSize = FloatDefault(key: "stageSize", defaultValue: 190)
+    static let stageSizeMaximize = FloatDefault(key: "stageSizeMaximize", defaultValue: Defaults.stageSize.value)
+    static let stageSizeAlmostMaximize = FloatDefault(key: "stageSizeAlmostMaximize", defaultValue: Defaults.stageSize.value)
     static let dragFromStage = OptionalBoolDefault(key: "dragFromStage")
     static let alwaysAccountForStage = OptionalBoolDefault(key: "alwaysAccountForStage")
     static let landscapeSnapAreas = JSONDefault<[Directional:SnapAreaConfig]>(key: "landscapeSnapAreas")
@@ -161,6 +163,8 @@ class Defaults {
         cascadeAllDeltaSize,
         sixthsSnapArea,
         stageSize,
+        stageSizeMaximize,
+        stageSizeAlmostMaximize,
         dragFromStage,
         alwaysAccountForStage,
         landscapeSnapAreas,
@@ -179,6 +183,17 @@ class Defaults {
         systemWideMouseDownApps,
         screensOrderedByX
     ]
+
+    static func stageSize(for action: WindowAction) -> CGFloat {
+        switch action {
+        case .maximize:
+            return stageSizeMaximize.cgFloat
+        case .almostMaximize:
+            return stageSizeAlmostMaximize.cgFloat
+        default:
+            return stageSize.cgFloat
+        }
+    }
 }
 
 struct CodableDefault: Codable {

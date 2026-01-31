@@ -3188,19 +3188,27 @@
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sGP-9h-TJl" userLabel="Stage View">
                                                 <rect key="frame" x="0.0" y="34" width="500" height="66"/>
                                                 <subviews>
-                                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yf4-Ks-DJM">
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="K3R-Hk-tq8">
+                                                        <rect key="frame" x="-2" y="72" width="202" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Stage Manager recent apps area" id="ayu-YO-10p">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yf4-Ks-DJM" userLabel="Stage Maximize Row">
                                                         <rect key="frame" x="0.0" y="50" width="454" height="16"/>
                                                         <subviews>
-                                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="K3R-Hk-tq8">
-                                                                <rect key="frame" x="-2" y="0.0" width="202" height="16"/>
-                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Stage Manager recent apps area" id="ayu-YO-10p">
+                                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="eN1-uP-8wS" userLabel="Stage Maximize Title">
+                                                                <rect key="frame" x="-2" y="0.0" width="90" height="16"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="" id="9H4-nD-0tD">
                                                                     <font key="font" metaFont="system"/>
                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
                                                             <slider verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="JTT-40-Rtw" userLabel="Stage Slider">
-                                                                <rect key="frame" x="206" y="0.0" width="199" height="16"/>
+                                                                <rect key="frame" x="94" y="0.0" width="311" height="16"/>
                                                                 <sliderCell key="cell" state="on" alignment="left" maxValue="250" doubleValue="190" tickMarkPosition="above" sliderType="linear" id="VER-nt-CGZ"/>
                                                                 <connections>
                                                                     <action selector="stageSliderChanged:" target="yhc-gS-h02" id="H5H-Mc-y4r"/>
@@ -3226,8 +3234,46 @@
                                                             <real value="3.4028234663852886e+38"/>
                                                         </customSpacing>
                                                     </stackView>
+                                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWl-0k-wfx" userLabel="Stage Almost Maximize Row">
+                                                        <rect key="frame" x="0.0" y="28" width="454" height="16"/>
+                                                        <subviews>
+                                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="2qT-Qf-0CW" userLabel="Stage Almost Maximize Title">
+                                                                <rect key="frame" x="-2" y="0.0" width="90" height="16"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="" id="O6R-bw-Gy2">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <slider verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hX7-r9-xoS" userLabel="Stage Almost Slider">
+                                                                <rect key="frame" x="94" y="0.0" width="311" height="16"/>
+                                                                <sliderCell key="cell" state="on" alignment="left" maxValue="250" doubleValue="190" tickMarkPosition="above" sliderType="linear" id="xat-M1-qzX"/>
+                                                                <connections>
+                                                                    <action selector="stageSliderChanged:" target="yhc-gS-h02" id="m7l-6q-PJj"/>
+                                                                </connections>
+                                                            </slider>
+                                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="4xC-Ux-0RY" userLabel="Stage Almost Label">
+                                                                <rect key="frame" x="411" y="0.0" width="45" height="16"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="190 px" id="E66-0X-P0m">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                        </subviews>
+                                                        <visibilityPriorities>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                        </visibilityPriorities>
+                                                        <customSpacing>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                        </customSpacing>
+                                                    </stackView>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="jKv-us-rNg">
-                                                        <rect key="frame" x="-2" y="28" width="264" height="14"/>
+                                                        <rect key="frame" x="-2" y="8" width="264" height="14"/>
                                                         <textFieldCell key="cell" title="If the area is too small, recent apps will be hidden" id="xE6-jw-EPt">
                                                             <font key="font" metaFont="message" size="11"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -3245,8 +3291,12 @@
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
                                                 </visibilityPriorities>
                                                 <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
@@ -3417,7 +3467,11 @@
                         <outlet property="hideMenuBarIconCheckbox" destination="wBT-R4-q9s" id="bkO-zn-yAZ"/>
                         <outlet property="launchOnLoginCheckbox" destination="eQJ-O3-a8H" id="iF3-bq-l1j"/>
                         <outlet property="reflowTodoShortcutView" destination="QTZ-pv-mwo" id="VYl-Tv-gFy"/>
+                        <outlet property="stageAlmostMaximizeLabel" destination="4xC-Ux-0RY" id="h5l-Jq-1tV"/>
+                        <outlet property="stageAlmostMaximizeSlider" destination="hX7-r9-xoS" id="vC3-Rb-X0S"/>
+                        <outlet property="stageAlmostMaximizeTitleLabel" destination="2qT-Qf-0CW" id="Z8Q-2B-3hR"/>
                         <outlet property="stageLabel" destination="eJ0-SU-XN3" id="NbI-hl-Tg2"/>
+                        <outlet property="stageMaximizeTitleLabel" destination="eN1-uP-8wS" id="xW5-1d-SoN"/>
                         <outlet property="stageSlider" destination="JTT-40-Rtw" id="9UK-b3-ph7"/>
                         <outlet property="stageView" destination="sGP-9h-TJl" id="B72-cy-f3F"/>
                         <outlet property="subsequentExecutionPopUpButton" destination="pVH-s3-FHn" id="tdS-iJ-EXc"/>
